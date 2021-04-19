@@ -61,6 +61,10 @@ function createCV() {
 )
 
   console.log(me_en);
+  setTimeout(() => {
+    fillHtmlTemplate(me_en)
+  }, 3000);
+
 }
 //update html element
 
@@ -118,13 +122,17 @@ function getMyInterests() {
         'backend', 'web', 'mobile', 'UX', 'database'
     ]
 }
-//html interactiove)
-function toggleLocale() {
+//html interactiove
+function fillHtmlTemplate(me) {
 
+    document.getElementById('me').innerHTML = `${me.name} ${me.surname}`
+
+}
+function toggleLocale() {
     let button = document.getElementById('lang')
-    if ( button.innerHTML === 'en') { 
-        button.innerHTML = 'ru'
+    if ( button.innerHTML === '🇬🇧') { 
+        button.innerHTML = '🇷🇺'
     } else { 
-        button.innerHTML = 'en'
+        button.innerHTML = '🇬🇧'
     }
 }

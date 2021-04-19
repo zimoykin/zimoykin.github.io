@@ -1,45 +1,94 @@
-.container {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%,-30%);
-}
 button:focus {
     outline:0
 }
 button:active {
-    box-shadow:  0px 0px 0px #91cac9,
-    0px 0px 0px #c9ffff;
     transform: translateY(2px);
 }
-.container h3 {
-    font-weight: lighter;
-    text-align: center;
+.container {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%,-25%);
 }
 .container img {
     object-fit: cover;
-    width: 200px;
-    height: 200px;
+    width: 20vh;
+    height: 20vh;
 }
-.lang{
+/* menu */
+.menu{
     position: absolute;
     right: 10px;
     top: 10px;
-    padding: 2rem;
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
 }
-.lang button {
+.menu button {
     border-style: none;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 3vh;
+    height: 3vh;
     background: #adf0ef;
-    box-shadow:  14px 14px 28px #91cac9,
-             -14px -14px 28px #c9ffff;
+    box-shadow:  14px 14px 28px gray,
+             -14px -14px 28px white;
+}
+.menu a {
+    text-decoration: none;
+}
+.menu a:active {
+    transform: translateY(2px); 
+}
+.menu img {
+    width: 3vh;
+    height: 3vh;
+    object-fit: cover;
+    border-radius: 50%;
+    border-style: none;
+    display: block;
+    margin: 0 auto;
+    box-shadow:  14px 14px 28px gray,
+    -14px -14px 28px white;
+}
+
+/* body */
+#name {
+    position: absolute;
+    top: calc(30% + 20vh/2);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 5vh;
+}
+#name h2 {
+    font-weight: lighter;
+    text-align: center;
+}
+#exp {
+    position: absolute;
+    top: calc(30% + 200px);
+    left: 0;
+    transform: translateY(50%);
+    width: 100%;
+    height: 100px;
+    display: flex;
+    margin: 1rem;
+}
+.left {
+    left:0;
+    width: 50%;
+    padding: 1rem;
+    background-color: #ebd7d0;
+}
+.right {
+    right: 0;
+    width: 50%;
+    padding: 1rem;
 }
 
 /* backgroud */
 .up {
-    background-color: antiquewhite;
+    background-color: #d9edd4;
     width: 100%;
     height: 30%;
    
@@ -47,7 +96,7 @@ button:active {
     left: 0;
 }
 .down {
-    background-color: lightcyan;
+    background-color: #acdcd9;
     width: 100%;
     height: 70%;
    
