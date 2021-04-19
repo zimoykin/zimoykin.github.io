@@ -1,0 +1,56 @@
+.container {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-30%);
+}
+button:focus {
+    outline:0
+}
+button:active {
+    box-shadow:  0px 0px 0px #91cac9,
+    0px 0px 0px #c9ffff;
+    transform: translateY(2px);
+}
+.container h3 {
+    font-weight: lighter;
+    text-align: center;
+}
+.container img {
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+}
+.lang{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 2rem;
+}
+.lang button {
+    border-style: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background: #adf0ef;
+    box-shadow:  14px 14px 28px #91cac9,
+             -14px -14px 28px #c9ffff;
+}
+
+/* backgroud */
+.up {
+    background-color: antiquewhite;
+    width: 100%;
+    height: 30%;
+   
+    top: 0;
+    left: 0;
+}
+.down {
+    background-color: lightcyan;
+    width: 100%;
+    height: 70%;
+   
+    top: calc(0 + 30%);
+    left: 0;
+}
