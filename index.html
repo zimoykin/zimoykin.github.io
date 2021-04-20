@@ -1,33 +1,44 @@
 <html>
     <link rel="stylesheet" href="style.css">
     <body onload="createCV()">
+        
+        <div id='back'>
+            <div id='window'>
+                <button class='closeWindow' onclick="closeWindow()"> X </button>
+                <span id='phone'> phone </span>
+            </div>
+        </div>
+
         <div class="menu">
-            <a href='https://instagram.com/zimoykin' target="_blank">
-                <img src=' https://facebookbrand.com/wp-content/uploads/2021/03/Instagram_AppIcon_Aug2017.png?w=300&h=300'/>
+           
+            <div title='show phone' class = 'logo' style="cursor: pointer;" onclick="showPhone()">
+                <img src='assets/telephone.png'/>
+            </div>
+            <a title='instagram' href='https://instagram.com/zimoykin' target="_blank">
+                <img src='assets/instagram.png'/>
             </a>
-            <a href='https://github.com/zimoykin' target="_blank">
-                <img src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png?w=300&h=300'/>
+            <a title='github' href='https://github.com/zimoykin' target="_blank">
+                <img src='assets/github.png'/>
             </a>
-            <a href='mailto:zimoykin@gmail.com?subject=job'>
-                <img src='assets/email.png'/>
+            <a title='write mail' href='mailto:zimoykin@gmail.com?subject=job'>
+                <img src='assets/gmail.png'/>
             </a>
-            <button id='lang' type="button" onclick="toggleLocale()">🇬🇧</button>
+            <button title='change locale' id='lang' type="button" onclick="toggleLocale()">🇬🇧</button>
         </div>
         <div class=container>
-            <img src = 'assets/dev.png'/>
+            <img src = 'assets/ava.png'/>
         </div>
-        <div id='name'>
+        <div id='bio'>
             <h2 id='me'>👨‍💻</h2>
-        </div>
-        <div id='exp'>
-            <div class='left'>
-                <span>tralla</span>
-            </div>
-            <div class='right'>
-                <span>tralla2</span>
+            <div id='exp'>
+                <div id='left'>
+                </div>
+                <div id='right'>
+                </div>
             </div>
         </div>
-        <div class='up'></div>
+        <!-- background -->
+        <div style="cursor: pointer;" onclick="changeBackground()" id='up'></div>
         <div class='down'></div>
     </body>
     <script src='script.js'> </script>
