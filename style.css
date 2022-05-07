@@ -1,49 +1,69 @@
 button:focus {
-    outline:0
+    outline: 0
 }
+
 button:active {
     transform: translateY(2px);
 }
+
 .container {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    display: flex;
+    max-width: 1280px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: nowrap;
+    margin-left: auto;
+    margin-right: auto;
 }
-.container img {
+
+.left {
+    width: 50%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.right {
+    width: 50%;
+    background-color: rgb(204, 172, 173);
+    right: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.right img {
     object-fit: cover;
     width: 20vh;
     height: 20vh;
 }
+
 /* menu */
-.menu{
+.menu {
     position: absolute;
-    right: 10px;
-    top: 10px;
+    left: 10px;
+    bottom: 10px;
     padding: 1rem;
     margin: 1rem;
     display: flex;
 }
-.menu button {
-    border-style: none;
-    border-radius: 50%;
-    width: 3vh;
-    height: 3vh;
-    background: #adf0ef;
-    margin-right: 1rem;
-    box-shadow:  14px 14px 28px gray,
-             -14px -14px 28px white;
-}
+
 .menu a {
     text-decoration: none;
     margin-right: 1rem;
 }
+
 .menu a:active {
-    transform: translateY(2px); 
+    transform: translateY(2px);
 }
-.menu a:hover {
-    
-}
+
 .menu img {
     width: 3vh;
     height: 3vh;
@@ -51,9 +71,10 @@ button:active {
     border-radius: 50%;
     border-style: none;
     display: block;
-    margin: 0 auto;
-    box-shadow:  14px 14px 28px gray,
-    -14px -14px 28px white;
+    padding: 1px;
+
+    box-shadow: 5px 5px 14px gray,
+        -5px -5px 14px white;
 }
 
 /* body */
@@ -65,45 +86,32 @@ button:active {
     width: 100%;
     height: 5vh;
 }
+
 #bio h2 {
     font-weight: lighter;
     text-align: center;
 }
+
 #exp {
-    position: absolute;
     left: 0;
-    width: 100%;
-    display: flex;
-    margin: 1rem;
+    display: inline;
     overflow-y: scroll;
 }
+
 #exp span {
     font-size: small;
     font-weight: lighter;
     margin-top: 0;
 }
+
 #exp h3 {
     font-size: medium;
     font-weight: lighter;
     margin-top: 0;
     margin-bottom: 0;
 }
-#left {
-    left:0;
-    width: 65%;
-    height: 100%;
-    padding: 1rem;
-    overflow-y: scroll;
-    background-color: rgba(207, 228, 207, 0.7)
-}
-#right {
-    right: 0;
-    width: 35%;
-    padding: 1rem;
-}
-/* backgroud */
+
 #up {
-    background-color: beige;
     width: 100%;
     height: 20%;
     margin: 0;
@@ -112,30 +120,27 @@ button:active {
     left: 0;
     transition: 1s;
 }
-#up h3{
+
+#up h3 {
     font-weight: lighter;
 }
-.down {
-    background-color: #acdcd9;
-    width: 100%;
-    height: 80%;
-    margin: 0;
-    padding: 0;
-    top: calc(0 + 20%);
-    left: 0;
+
+.list {
+    position: inherit;
 }
 
 #lang {
     font-size: larger;
 }
+
 .logo {
     margin-right: 1rem;
 }
 
 /* window */
 #back {
-    left:0;
-    top:0;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
@@ -144,14 +149,15 @@ button:active {
     transition: 1s;
     opacity: 0;
 }
+
 #window {
     left: 50%;
-    top:20%;
+    top: 20%;
     transform: translate(-50%, -50%);
     position: absolute;
     width: 50vh;
     height: 20vh;
-    background-color: beige;
+    background-color: white;
     border-radius: 10px;
 }
 
@@ -167,7 +173,7 @@ button:active {
 
 #phone {
     left: 50%;
-    top:50%;
+    top: 50%;
     transform: translate(-50%, -50%);
     position: absolute;
 }

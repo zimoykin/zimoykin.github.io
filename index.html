@@ -1,45 +1,56 @@
 <html>
-    <link rel="stylesheet" href="style.css">
-    <body onload="createCV()">
-        
-        <div id='back'>
-            <div id='window'>
-                <button class='closeWindow' onclick="closeWindow()"> X </button>
-                <span id='phone'> phone </span>
-            </div>
-        </div>
+<link rel='stylesheet' href='style.css'>
 
-        <div class="menu">
-           
-            <div title='show phone' class = 'logo' style="cursor: pointer;" onclick="showPhone()">
-                <img src='assets/telephone.png'/>
-            </div>
-            <a title='instagram' href='https://instagram.com/zimoykin' target="_blank">
-                <img src='assets/instagram.png'/>
-            </a>
-            <a title='github' href='https://github.com/zimoykin' target="_blank">
-                <img src='assets/github.png'/>
-            </a>
-            <a title='write mail' href='mailto:zimoykin@gmail.com?subject=job'>
-                <img src='assets/gmail.png'/>
-            </a>
-            <button title='change locale' id='lang' type="button" onclick="toggleLocale()">🇬🇧</button>
+<body onload='createCV()'>
+
+    <div id='back'>
+        <div id='window'>
+            <button class='closeWindow' onclick='closeWindow()'> X </button>
+            <span id='phone'> phone </span>
         </div>
-        <div class=container>
-            <img src = 'assets/ava.png'/>
+    </div>
+
+    <div class='menu'>
+        <div title='show phone' class='logo' style='cursor: pointer;' onclick='showPhone()'>
+            <img src='assets/telephone.png' />
         </div>
-        <div id='bio'>
-            <h2 id='me'>👨‍💻</h2>
+        <a title='instagram' href='https://instagram.com/zimoykin' target='_blank'>
+            <img src='assets/instagram.png' />
+        </a>
+        <a title='github' href='https://github.com/zimoykin' target='_blank'>
+            <img src='assets/github.png' />
+        </a>
+        <a title='write mail' href='mailto:zimoykin@gmail.com?subject=job'>
+            <img src='assets/circle_mail.png' />
+        </a>
+    </div>
+
+    <div class='container'>
+        <div class='left' style='cursor: pointer;' onclick='changeBackground(left)' id='left'>
             <div id='exp'>
-                <div id='left'>
-                </div>
-                <div id='right'>
-                </div>
             </div>
         </div>
-        <!-- background -->
-        <div style="cursor: pointer;" onclick="changeBackground()" id='up'></div>
-        <div class='down'></div>
-    </body>
-    <script src='script.js'> </script>
+        <div class='right' style='cursor: pointer;' onclick='changeBackground(right)' id="right">
+            <div class='list'>
+                <img src='assets/ava_2.png' />
+
+                <h2 id='me'>👨‍💻</h2>
+                <div id='position'>
+
+                </div>
+                <div id='skills'>
+
+                </div>
+                <div id='interests'>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- background -->
+    <!-- <div style='cursor: pointer;' onclick='changeBackground()' id='up'></div> -->
+</body>
+<script src='script.js'> </script>
+
 </html>
