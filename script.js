@@ -57,7 +57,7 @@ class Experience {
 //variables
 let me;
 let back = document.getElementById('back');
-const months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+myStorage = window.localStorage;
 //
 function createCV() {
   back.style.visibility = 'hidden';
@@ -71,6 +71,7 @@ function createCV() {
     fillHtmlTemplate(me);
   }, 1000);
 
+
 }
 //update html element
 
@@ -80,22 +81,22 @@ function getExperience() {
 
   return [
     new Experience(
-      new Date(2021, 08, 01),
+      new Date("2021-08-01"),
       null,
       new Company('Fireart Studio', new City('Warsaw', 'Poland')),
       'Backend Developer',
       "Nodejs developer "
     ),
     new Experience(
-      new Date(2020, 10, 01),
+      new Date("2020-10-01"),
       null,
       new Company('RaceRoom Entertainment GmbH', new City('Fichtenberg', 'Germany')),
       'Software Developer',
       "Participating in the development of microservices based swift and javascript. Android application (kotlin, jetpack compose)"
     ),
     new Experience(
-      new Date(2017, 12, 01),
-      null,
+      new Date("2017-12-01"),
+      new Date("2021-08-01"),
       new Company('ChemPartners LLC', moscow), 'Senior Software Engineer',
       `● Implemented a crm system of control stocks which has a workstation form for all employees roles. 
       ● Created report constructor for chiefs and managers with detailed sales costs. 
@@ -103,8 +104,8 @@ function getExperience() {
       ● EDI.`
     ),
     new Experience(
-      new Date(2017, 2, 01),
-      new Date(2017, 12, 01),
+      new Date("2017-02-01"),
+      new Date("2017-12-01"),
       new Company('Kamis LLC', moscow), 'Software Engineer',
       `● Supported finance crm system and optimized for business processes of the company.
       ● EDI.
@@ -112,8 +113,8 @@ function getExperience() {
       ● Internal data exchange.`
     ),
     new Experience(
-      new Date(2013, 6, 01),
-      new Date(2017, 2, 01),
+      new Date("2013-06-01"),
+      new Date("2017-02-01"),
       new Company('MIRUS MEDICAL LLC', moscow), 'Head of IT Department',
       `● Built it-enterprise structure for six remote offices (linked by vpn l2tp over ipsec) based on windows server (hyper-v, AD).
       ● Implemented a crm system for each of stages of sales, finance team, logistics and warehouse.
@@ -124,8 +125,8 @@ function getExperience() {
       selection for the IT department.`
     ),
     new Experience(
-      new Date(2012, 6, 01),
-      new Date(2013, 6, 01),
+      new Date("2012-06-01"),
+      new Date("2013-06-01"),
       new Company('Rumex LLC', moscow), 'Software Developer',
       `● Development
       ● Tech support`
@@ -150,6 +151,16 @@ function getMyInterests() {
 //html interactiove
 function fillHtmlTemplate(me) {
 
+
+  const rightColor = myStorage.getItem('right');
+  const leftColor = myStorage.getItem('left');
+  if (rightColor) {
+    document.getElementById('right').style.backgroundColor = rightColor;
+  }
+  if (leftColor) {
+    document.getElementById('left').style.backgroundColor = leftColor;
+  }
+
   document.getElementById('me').innerHTML = `${me.name} ${me.surname}`;
 
   let div = document.getElementById('exp');
@@ -158,9 +169,14 @@ function fillHtmlTemplate(me) {
     let company = document.createElement("h3");
     company.innerHTML = val.company.title + ' (' + val.company.city.name + ', ' + val.company.city.country + ')';
     div.appendChild(company);
+
     let position = document.createElement("span");
-    position.innerHTML = val.position + ', since ' + months[val.start.getMonth()] + ' ' + val.start.getFullYear() + ' - ' + (val.end === null ? 'Present' : months[val.end.getMonth()] + ' ' + val.end.getFullYear());
+    position.innerHTML = '<b>' + val.position + '</b></br>';
     div.appendChild(position);
+
+    let since = document.createElement("span");
+    since.innerHTML = 'since ' + val.start.toLocaleDateString('en', { year: 'numeric', month: 'long' }) + ' to ' + (val.end === null ? 'Present' : val.end.toLocaleDateString('en', { year: 'numeric', month: 'long' }));
+    div.appendChild(since);
     // let about = document.createElement("span");
     // _ = val.description.split("●").map(val => {
     //   if (val) about.innerHTML += `<br>●${val}`;
@@ -211,7 +227,10 @@ function closeWindow() {
   back.style.visibility = (back.style.visibility === 'hidden') ? 'visible' : 'hidden';
 }
 function changeBackground(value) {
-  document.getElementById(value.id).style.backgroundColor = `rgb(${random(100, 255)}, ${random(100, 255)}, ${random(100, 255)})`;
+  const newColor = `rgb(${random(100, 255)}, ${random(100, 255)}, ${random(100, 255)})`;
+  document.getElementById(value.id).style.backgroundColor = newColor;
+
+  myStorage.setItem(value.id, newColor);
 
   function random(min, max) {
     let rand = min - 0.5 + Math.random() * (max - min + 1);
