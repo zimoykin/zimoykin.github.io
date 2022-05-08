@@ -1,5 +1,6 @@
 <html>
 <link rel='stylesheet' href='style.css'>
+<link rel='stylesheet' href='loader.css'>
 
 <body onload='createCV()'>
 
@@ -9,6 +10,8 @@
             <span id='phone'> phone </span>
         </div>
     </div>
+
+    <div id="loaderElement"></div>
 
     <div class='menu'>
         <div title='show phone' class='logo' style='cursor: pointer;' onclick='showPhone()'>
@@ -27,6 +30,10 @@
 
     <div class='container'>
         <div class='left' style='cursor: pointer;' onclick='changeBackground(left)' id='left'>
+            <div>
+                <span>work experience</span>
+                <hr>
+            </div>
             <div id='exp'>
             </div>
         </div>
@@ -34,7 +41,7 @@
             <div class='list'>
                 <img src='assets/ava_2.png' />
 
-                <h2 id='me'>👨‍💻</h2>
+                <h2 id='me'></h2>
                 <div id='position'>
 
                 </div>

@@ -12,7 +12,6 @@ class Me {
     this.interests = interests;
   }
 }
-
 class City {
   name;
   country;
@@ -21,7 +20,6 @@ class City {
     this.country = country;
   }
 }
-
 class Company {
   title;
   city;
@@ -37,7 +35,6 @@ class Project {
     this.link = link;
   }
 }
-
 class Experience {
   start;
   end;
@@ -53,15 +50,16 @@ class Experience {
     this.description = description;
   }
 }
-
 //variables
 let me;
 let back = document.getElementById('back');
 myStorage = window.localStorage;
+var root = document.querySelector(':root');
 //
 function createCV() {
+  setLoader(true);
   back.style.visibility = 'hidden';
-  me = new Me("Dmitrii", "Zimoikin", 'Backend developer', "zimoykin@gmail.com", '+48 737 404 142', new City('Warsaw', 'Poland'),
+  me = new Me("Dmitrii", "Zimoikin", 'Backend developer', "zimoykin@gmail.com", '+4B 737 4O4 I42', new City('Warsaw', 'Poland'),
     getExperience().sort((a, b) => { a.start > b.start; }),
     getMySkills(), getMyTech(), getMyInterests()
   );
@@ -69,7 +67,8 @@ function createCV() {
   console.log(me);
   setTimeout(() => {
     fillHtmlTemplate(me);
-  }, 1000);
+    setLoader(false);
+  }, 1000 * getRandomDelay(1, 5));
 
 
 }
@@ -150,16 +149,23 @@ function getMyInterests() {
 }
 //html interactiove
 function fillHtmlTemplate(me) {
-
-
   const rightColor = myStorage.getItem('right');
   const leftColor = myStorage.getItem('left');
+  let stylesR = getComputedStyle(root);
+
   if (rightColor) {
-    document.getElementById('right').style.backgroundColor = rightColor;
+    const prev = stylesR.getPropertyValue('--right-color');
+    root.style.setProperty('--right-color-prev', prev);
+    root.style.setProperty('--right-color', rightColor);
   }
-  if (leftColor) {
-    document.getElementById('left').style.backgroundColor = leftColor;
-  }
+  else
+    root.style.setProperty('--right-color', 'rgb(187, 209, 213)');
+
+  if (leftColor)
+    document.documentElement.style.setProperty('--left-color', leftColor);
+  else
+    document.documentElement.style.setProperty('--left-color', 'rgb(231, 222, 208)');
+
 
   document.getElementById('me').innerHTML = `${me.name} ${me.surname}`;
 
@@ -226,14 +232,35 @@ function closeWindow() {
   back.style.opacity = 0;
   back.style.visibility = (back.style.visibility === 'hidden') ? 'visible' : 'hidden';
 }
+
 function changeBackground(value) {
   const newColor = `rgb(${random(100, 255)}, ${random(100, 255)}, ${random(100, 255)})`;
-  document.getElementById(value.id).style.backgroundColor = newColor;
-
+  root.style.setProperty(`--${value.id}-color`, newColor);
   myStorage.setItem(value.id, newColor);
+}
 
-  function random(min, max) {
-    let rand = min - 0.5 + Math.random() * (max - min + 1);
-    return Math.round(rand);
+function random(min, max) {
+  let rand = min - 0.5 + Math.random() * (max - min + 1);
+  return Math.round(rand);
+}
+
+
+function setLoader(on) {
+  const loader = document.getElementById('loaderElement');
+  if (on) {
+    loader.innerHTML = ` <div class="loader">
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+  </div>`;
+    loader.style.visibility = 'visible';
+  } else {
+    loader.innerHTML = '';
+    loader.style.visibility = 'hidden';
   }
+}
+
+function getRandomDelay(min, max) {
+  return Math.random() * (max - min) + min;
 }
